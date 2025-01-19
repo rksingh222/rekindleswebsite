@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style3.css">
+    <link rel="stylesheet" href="sql.css">
+</head>
+
+<body>
+    <div class="backdrop"></div>
+    <header>
+        <button id="side-menu-toggle">Menu</button>
+        <nav class="navigation">
+            <h2 class="logo">Logo</h2>
+            <div>
+                <a href="index.html">Home</a>
+                <a hreft="language.html">Languages</a>
+                <button class="btnLogin-popup">Login</button>
+            </div>
+        </nav>
+    </header>
+    <nav class="mobile-nav">
+        <ul class="mobile-nav__item-list">
+            <li class="mobile-nav__item">
+                <a class="mobile-nav-item" href="index.html" onclick="
+                document.getElementsByClassName('backdrop')[0].style.display = 'none' ; 
+                document.getElementsByClassName('mobile-nav')[0].classList.remove('open') ; 
+                ">Home</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="mobile-nav-item1" href="language.html">Languages</a>
+            </li>
+            <li class="mobile-nav__item">
+                <button class="btnLogin-popup">Login</button>
+            </li>
+        </ul>
+    </nav>
+    <nav class="mobile-nav">
+        <ul class="mobile-nav__item-list">
+            <li class="mobile-nav__item">
+                <a class="mobile-nav-item" href="#" onclick="
+                document.getElementsByClassName('backdrop')[0].style.display = 'none' ; 
+                document.getElementsByClassName('mobile-nav')[0].classList.remove('open') ; 
+                ">Home</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="mobile-nav-item1" href="#">Languages</a>
+            </li>
+            <li class="mobile-nav__item">
+                <button class="btnLogin-popup">Login</button>
+            </li>
+        </ul>
+    </nav>
+
+
+<!-- min-height: 4em; display: table-cell; vertical-align: middle ;-->
+    <div class="language">
+        <span class="info-header">SQL</span>
+        <section class="section-create-database">
+            <p>create a database</p>
+            <p>&#8594; create database databasename </p> 
+            <p>dropping a database</p>
+            <p>&#8594; drop database databasename</p>
+            <p>back up the database</p>
+            <p>&#8594; backup database testDB to disk = 'D:\backups\testDB.bak';</p>
+            <p>create a table</p>
+            <p>&#8594; create table persons(personID int,lastname varchar(255),firstname varchar(255),address varchar(255),city varchar(255))</p>
+            <p>creating a table using select command</p>
+            <p>&#8594; create table testtable as select customername, contactname from customers</p>
+            <p>inserting into a table</p>
+            <p>&#8594; insert into table_name (column1, column2, column3.....) values (value1, value2, value3)</p>
+            <p>&#8594; or insert into table_name values (value1, value2, value3,.....)</p>
+            <p>It is also possible to only insert data in specific columns</p>
+            <p>&#8594; insert into customers (customername, city, country) values ('Cardinal', 'Stavanger', 'Norway');</p>
+            <p>Inserting multiple rows in one statement</p>
+            <p>&#8594; insert into customers (customerName, contactName, address, city, postalcode, country)
+                values
+                ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway'),
+                ('Greasy Burger', 'Per Olsen', 'Gateveien 15', 'Sandnes', '4306', 'Norway'),
+                ('Tasty Tee', 'Finn Egan', 'Streetroad 19B', 'Liverpool', 'L1 0AA', 'UK'); </p>
+            <p>Adding a new row in the table using alter</p>
+            <p>&#8594; alter table customers add email varchar(255);</p>
+            <p>Deleting a table</p>
+            <p>&#8594; delete from table_name where condition;</p>
+            <p>&#8594; delete from customers where customername ='Alfreds FutterKiste';</p>
+            <p>altering a table</p>
+            <p>&#8594; alter table customers add email varchar(255)</p>
+            <p>&#8594; alter table customers drop column email</p>
+            <p>&#8594; alter table customers rename column old_name to new_name;</p>
+            <p>&#8594; alter table persons add dateofbirth date;</p>
+            <p>&#8594; alter table persons drop column dateofbirth;</p>
+            <p>updating a table</p>
+            <p>&#8594; update customers set contactname='Alfred Schmidt', city='Frankfurt' where customerID = 1;</p>
+            <p>update customers set contactname='Juan' where country='Mexico'</p>
+            <p> be careful when updating records. If you omit the WHERE clause, ALL records will be updated!</p>
+            <p>&#8594; update customers set contactName='Juan';</p>
+            <p>The following SQL statement deletes the customer "Alfreds Futterkiste" from the "Customers" table:</p>
+            <p>&#8594; delete from Customers where CustomerName='Alfreds Futterkiste';</p>
+            <p>It is possible to delete all rows in a table without deleting the table. </p>
+            <p>This means that the table structure, attributes, and indexes will be intact:</p>
+            <p>&#8594; delete from customers;</p>
+        </section>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>

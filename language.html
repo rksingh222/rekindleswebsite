@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="language.css">
+</head>
+
+<body>
+    <div class="backdrop"></div>
+    <header>
+        <button id="side-menu-toggle">Menu</button>
+        <nav class="navigation">
+            <h2 class="logo">Logo</h2>
+            <div>
+                <a href="index.html">Home</a>
+                <a href="language.html">Languages</a>
+                <button class="btnLogin-popup">Login</button>
+            </div>
+        </nav>
+    </header>
+    <nav class="mobile-nav">
+        <ul class="mobile-nav__item-list">
+            <li class="mobile-nav__item">
+                <a class="mobile-nav-item" href="index.html" onclick="
+                document.getElementsByClassName('backdrop')[0].style.display = 'none' ; 
+                document.getElementsByClassName('mobile-nav')[0].classList.remove('open') ; 
+                ">Home</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="mobile-nav-item1" href="language.html">Languages</a>
+            </li>
+            <li class="mobile-nav__item">
+                <button class="btnLogin-popup">Login</button>
+            </li>
+        </ul>
+    </nav>
+    <nav class="mobile-nav">
+        <ul class="mobile-nav__item-list">
+            <li class="mobile-nav__item">
+                <a class="mobile-nav-item" href="index.html" onclick="
+                document.getElementsByClassName('backdrop')[0].style.display = 'none' ; 
+                document.getElementsByClassName('mobile-nav')[0].classList.remove('open') ; 
+                ">Home</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="mobile-nav-item1" href="language.html">Languages</a>
+            </li>
+            <li class="mobile-nav__item">
+                <button class="btnLogin-popup">Login</button>
+            </li>
+        </ul>
+    </nav>
+
+
+
+    <div class="language">
+        <span class="info-header">Languages</span>
+        <form method="get" action="index.html">
+            <div class="my-flex-language-container">
+                <button type="submit" class="btnLogin-popup">Sql</button>
+                <button type="submit" class="btnLogin-popup">C</button>
+                <button type="submit" class="btnLogin-popup">C++</button>
+                <button type="submit" class="btnLogin-popup">Data Structure</button>
+                <button type="submit" class="btnLogin-popup">Java</button>
+                <button type="submit" class="btnLogin-popup">Android</button>
+                <button type="submit" class="btnLogin-popup">React-Native</button>
+                <button type="submit" class="btnLogin-popup">IOS</button>
+                <button type="submit" class="btnLogin-popup">React</button>
+                <button type="submit" class="btnLogin-popup">Networking</button>
+                <button type="submit" class="btnLogin-popup">Html</button>
+                <button type="submit" class="btnLogin-popup">CSS</button>
+                <button type="submit" class="btnLogin-popup">Java Script</button>
+            </div>
+        </form>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
