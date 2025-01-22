@@ -57,25 +57,27 @@
     </nav>
 
 
-<!-- min-height: 4em; display: table-cell; vertical-align: middle ;-->
+    <!-- min-height: 4em; display: table-cell; vertical-align: middle ;-->
     <div class="language">
         <span class="info-header">SQL</span>
         <section class="section-create-database">
             <p>create a database</p>
-            <p>&#8594; create database databasename </p> 
+            <p>&#8594; create database databasename </p>
             <p>dropping a database</p>
             <p>&#8594; drop database databasename</p>
             <p>back up the database</p>
             <p>&#8594; backup database testDB to disk = 'D:\backups\testDB.bak';</p>
             <p>create a table</p>
-            <p>&#8594; create table persons(personID int,lastname varchar(255),firstname varchar(255),address varchar(255),city varchar(255))</p>
+            <p>&#8594; create table persons(personID int,lastname varchar(255),firstname varchar(255),address
+                varchar(255),city varchar(255))</p>
             <p>creating a table using select command</p>
             <p>&#8594; create table testtable as select customername, contactname from customers</p>
             <p>inserting into a table</p>
             <p>&#8594; insert into table_name (column1, column2, column3.....) values (value1, value2, value3)</p>
             <p>&#8594; or insert into table_name values (value1, value2, value3,.....)</p>
             <p>It is also possible to only insert data in specific columns</p>
-            <p>&#8594; insert into customers (customername, city, country) values ('Cardinal', 'Stavanger', 'Norway');</p>
+            <p>&#8594; insert into customers (customername, city, country) values ('Cardinal', 'Stavanger', 'Norway');
+            </p>
             <p>Inserting multiple rows in one statement</p>
             <p>&#8594; insert into customers (customerName, contactName, address, city, postalcode, country)
                 values
@@ -103,13 +105,13 @@
             <p>It is possible to delete all rows in a table without deleting the table. </p>
             <p>This means that the table structure, attributes, and indexes will be intact:</p>
             <p>&#8594; delete from customers;</p>
-            <p>Constraints - constraints can be specified when the table is created with create table statement, or 
+            <p>Constraints - constraints can be specified when the table is created with create table statement, or
                 after the table is created with the ALTER TABLE statement.</p>
             <p>&#8594; create table table_name(
                 column1 datatype constraint,
                 column2 datatype constraint,
                 column3 datatype constraint
-              );</p>
+                );</p>
             <p>not null constraint</p>
             <p>&#8594; The NOT NULL constraint enforces a column to NOT accept NULL values.</p>
             <p>&#8594; create table persons ( ID int NOT NULL,
@@ -120,11 +122,11 @@
             <p>unique constraint</p>
             <p>&#8594; alter table persons add unique (ID);</p>
             <p>foreigh key constraint</p>
-            <p>a table has primary key in one table and that primary key is also in another table so that it becomes a 
+            <p>a table has primary key in one table and that primary key is also in another table so that it becomes a
                 foreign key. the foreign key prevents invalid data from being inserted into the foreign key column </p>
             <p>&#8594; create table Persons (
-                    PersonID int PRIMARY KEY,
-                    PersonName Varchar(255));</p>
+                PersonID int PRIMARY KEY,
+                PersonName Varchar(255));</p>
             <p>&#8594; create table Orders (
                 OrderID int NOT NULL,
                 OrderNumber int NOT NULL,
@@ -136,7 +138,8 @@
                 FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);</p>
             <p>dropping foreign key constraint using alter</p>
             <p>&#8594; alter table Orders DROP FOREIGN KEY FK_PersonOrder;</p>
-            <p>check constraint - the check constraint is used to limit the value range that can be placed in a column.</p>
+            <p>check constraint - the check constraint is used to limit the value range that can be placed in a column.
+            </p>
             <p>&#8594; age int check (Age>=18)</p>
             <p>check constraint using alter</p>
             <p>&#8594; alter table persons add check (Age>=18);</p>
@@ -148,6 +151,229 @@
             <p>&#8594; alter table person alter city SET DEFAULT 'Sandnes';</p>
             <p>indexes are used to retrieve data from the database more quickly than otherwise </p>
             <p>the user cannot see the indexes they are just used to speed up the searches</p>
+            <p>&#8594; create indexindex_name on table_name (column1, column2, column3, ...)</p>
+            <p>In indexes duplicate values are not allowed</p>
+            <p>&#8594; create unique index index_name ON table_name (column1, column2, column3, ....)</p>
+            <p>The query for the index is same as nor mal sql query but it will fasten the result if applied</p>
+            <p>if you want to force the usage of INDEXES</p>
+            <p>&#8594; select * from table with(index(index_Name))</p>
+            <p>&#8594; select * from table1 use index (col1_index,col2_index) WHERE col1=1 AND col2=2 AND col3=3;</p>
+            <p>&#8594; drop index index_name</p>
+            <p>auto_increment allows a unique number to be generated automatically when a new record is inserted into a
+                table</p>
+            <p>often this is the primary key we would like to be created every time a new record is inserted</p>
+            <p>auto_increment = 100 will start from 100 default its 0</p>
+            <p>&#8594; create table persons (personId not null auto_increment = 100, firstname varchar(255), lastname
+                varchar(255), primary Key (PersonId))</p>
+            <p>adding auto_increment after the table is created</p>
+            <p>&#8594; alter table persons auto_increment=100;</p>
+            <p>Auto_Increment not supported then use identity</p>
+            <p>&#8594; create table persons (personid int IDENTITY(1,1) PRIMARY KEY,
+                lastName varchar(255) NOT NULL,
+                firstName varchar(255),
+                age int);</p>
+            <p>to get the distinct values of query results</p>
+            <p>&#8594; select distinct places from customers</p>
+            <p>&#8594; select count(distinct country) from customers where select * from customers where country="India"
+            </p>
+            <p>&#8594; between is used in sql Between a certain Age</p>
+            <p>&#8594; like Search for a pattern (LIKE 'G%')</p>
+            <p>IN To specify multiple possible values for a column</p>
+            <p>order by keyword is used to sort the result set in ascending or descending Order</p>
+            <p>select * from products order by asc|desc</p>
+            <p>Not is used in combination with other operator to give the opposite result</p>
+            <p>&#8594; select * from customers where customerName not like 'A%';</p>
+            <p>Not between 10 and 60</p>
+            <p>IN ('Paris', 'London')</p>
+            <p>is null is used to test for empty values</p>
+            <p>is not null is used to test for non empty values</p>
+            <p>&#8594; select customername from customers where Address is null</p>
+            <p>update sql query </p>
+            <p>&#8594; update tablename set column1 = value1, column2 = value2 WHERE condition</p>
+            <p>delete from customers</p>
+            <p>the select top clause is used to specify the number of records to return.</p>
+            <p>&#8594; select top 3 * from Customers;</p>
+            <p>limit clause </p>
+            <p>select * from customers limit 3;</p>
+            <p>top 50% clause</p>
+            <p>select top 50 percent * from Customers;</p>
+            <p>The MIN() function returns the smallest value of the selected column.</p>
+            <p>The MAX() function returns the largest value of the selected column.</p>
+            <p>&#8594; select MIN(Price) as smallestprice from products;</p>
+            <p>Here we use the MIN() function and the GROUP BY clause, to return the smallest price for each category in
+                the Products table:</p>
+            <p>&#8594; select min(Price) AS SmallestPrice, CategoryID from Products group by categoryId</p>
+            <p>The COUNT() function returns the number of rows that matches a specified criterion.</p>
+            <p>&#8594; select count(*) from products;</p>
+            <p>&#8594; select count(ProductName) from Products;</p>
+            <p>we can use sum</p>
+            <p>&#8594; select sum(Quantity) AS total from OrderDetails;</p>
+            <p>&#8594; select orderid, sum(Quantity) AS [Total Quantity] FROM OrderDetails GROUP BY OrderID;</p>
+            <p>we can use average</p>
+            <p>&#8594; select avg(price) from Products;</p>
+            <p>&#8594; select avg(price) as averageprice, categoryID from products group by categoryID;</p>
+            <p> with Like % represents zero or more character</p>
+            <p> _ represents a single character</p>
+            <p>{} represents any escape character</p>
+            <p>Aliases --- AS</p>
+            <p>A join clause is used to combine two rows from two or more tables</p>
+            <p>inner join -- Intersection --- Returns records that have matching values in both tables</p>
+            <p>left (outer) join -- returns all records from the left table and the matched records from the right
+                tables</p>
+            <p>right (outer) join - returns all records from the right table and the matched records from the left table
+            </p>
+            <p>full (outer) join -- union -- returns all records when there is a match in either left or right table i.e
+                AUB</p>
+            <p>inner join keyword selects records that have matching values in both tables.</p>
+            <p>&#8594; select column_name(s) from table1 inner join table2 on table1.column_name = table2.column_name;
+            </p>
+            <p>select productID, productName, CategoryName from Products inner join Categories ON Products.CategoryID =
+                Categories.CategoryID;</p>
+            <p>left join - left table + matching records of left and right</p>
+            <p>The left join keyword returns all records from the left table (Table1), even if there are no matches in
+                the right table (Orders).</p>
+            <p>&#8594; select column_name(s) from table1 left join table2 on table1.column_name = table2.column_name;
+            </p>
+            <p>table1 is a left table</p>
+            <p>The right join keyword returns all records from the right table (table2), and the matching records from
+                the left table (table1).
+                The result is 0 records from the left side, if there is no match.</p>
+            <p>&#8594; select column_name(s) from table1 right join table2 on table1.column_name = table2.column_name;
+            </p>
+            <p>&#8594; select Orders.OrderID, Employees.LastName, Employees.FirstName from Orders right join Employees
+                ON Orders.EmployeeID = Employees.EmployeeID
+                ORDER BY Orders.OrderID;</p>
+            <p>table2 is right table</p>
+            <p>full outer join -- AUB</p>
+            <p>&#8594; select column_name(s) from table1 full outer join table2 on table1.column_name =
+                table2.column_name
+                WHERE condition; </p>
+            <p>&#8594; select Customers.CustomerName, Orders.OrderID
+                FROM Customers
+                FULL OUTER JOIN Orders ON Customers.CustomerID=Orders.CustomerID
+                ORDER BY Customers.CustomerName;</p>
+            <p>self join - A self join is a regular join, but the table is joined with itself.</p>
+            <p>&#8594; SELECT A.CustomerName AS CustomerName1, B.CustomerName AS CustomerName2, A.City
+                FROM Customers A, Customers B
+                WHERE A.CustomerID <> B.CustomerID
+                    AND A.City = B.City
+                    ORDER BY A.City;</p>
+            <p>The UNION operator is used to combine the result-set of two or more SELECT statements.
+                Every SELECT statement within UNION must have the same number of columns
+                The columns must also have similar data types
+                The columns in every SELECT statement must also be in the same order</p>
+            <p>&#8594; SELECT column_name(s) FROM table1
+                UNION
+                SELECT column_name(s) FROM table2;</p>
+            <p>The UNION operator selects only distinct values by default. To allow duplicate values, use UNION ALL</p>
+            <p>The GROUP BY statement groups rows that have the same values into summary rows, like "find the number of
+                customers in each country".
+                often used with aggregate functions (COUNT(), MAX(), MIN(), SUM(), AVG())</p>
+            <p>group by syntax</p>
+            <p>&#8594; select column_name(s)
+                FROM table_name
+                WHERE condition
+                GROUP BY column_name(s)
+                ORDER BY column_name(s);</p>
+            <p>having clause</p>
+            <p>The HAVING clause was added to SQL because the WHERE keyword cannot be used with aggregate functions
+                syntax of having clause</p>
+            <p>¸select column_name(s)
+                FROM table_name
+                WHERE condition
+                GROUP BY column_name(s)
+                HAVING condition
+                ORDER BY column_name(s);</p>
+            <p>&#8594; select COUNT(CustomerID), Country
+                FROM Customers
+                GROUP BY Country
+                HAVING COUNT(CustomerID) > 5;</p>
+            <p>sql exists - exists Syntax </p>
+            <p>&#8594; select column_name(s)
+                FROM table_name
+                WHERE EXISTS
+                (SELECT column_name FROM table_name WHERE condition);</p>
+            <p>it will first check the customer id in Order table with Customers customer id . the id's which
+                satisfy will be printed on the first query. i.e if 102, 103 are satisfied then that fname and
+                lname will be printed </p>
+            <p>the output will be all the rows which are executed in the subquery of exist statement</p>
+            <p>where not exists</p>
+            <p>The ALL operator is used to compare a value with all the values returned by a subquery.</p>
+            <p>The condition
+                will be evaluated to TRUE if the value meets the specified condition for every value in the result set
+                of the subquery.
+                The ALL must be preceded by comparison operators and evaluates true if all of the subqueries values meet
+                the condition.
+                ALL is used with SELECT, WHERE, and HAVING statements.
+            </p>
+
+            <p>&#8594; select OrderID
+                FROM OrderDetails
+                GROUP BY OrderID
+                HAVING MAX(Quantity) > ALL (SELECT AVG(Quantity) FROM OrderDetails GROUP BY OrderID);</p>
+            <p>for example if subquery return 10, 12, 15 and the query will check with all 10, 12 and 15 if it works
+                then it will return </p>
+            <p>ANY operator
+                ANY compares a value to each value in a list or results from a query and evaluates to true if the result
+                of an inner query contains at least one row.
+                ANY return true if any of the subqueries values meet the condition.
+                ANY must be preceded by comparison operators.</p>
+            <p>for example if subquery return 10, 12 and 15 and the inner query gives 12 > Any(10, 12, 15) it will
+                satisfy because if any of it returns true it is true</p>
+            <p>&#8594; select distinct CategoryID
+                FROM Products
+                WHERE ProductID = ANY (SELECT ProductID FROM OrderDetails);</p>
+            <p><u>select into</u></p>
+            <p>&#8594; select *
+                INTO newtable [IN externaldb]
+                FROM oldtable
+                WHERE condition;</p>
+            <p>&#8594; select column1, column2, column3, ...
+                INTO newtable [IN externaldb]
+                FROM oldtable
+                WHERE condition;</p>
+            <p>&#8594; select * INTO CustomersBackup2017 IN 'Backup.mdb'
+                FROM Customers;</p>
+            <p>The insert into select statement copies data from one table and inserts it into another table.</p>
+            <p>&#8594; insert into Customers (CustomerName, City, Country)
+                select SupplierName, City, Country FROM Suppliers;</p>
+            <p>sql case</p>
+            <p>&#8594; select OrderID, Quantity, <br>
+                &nbsp;case<br>
+                &nbsp;&nbsp;when Quantity > 30 then 'The quantity is greater than 30'<br>
+                &nbsp;&nbsp;when Quantity = 30 then 'The quantity is 30' <br>
+                &nbsp;&nbsp;else 'The quantity is under 30' <br>
+                &nbsp;end AS QuantityText <br>
+                from OrderDetails;
+            </p>
+            <p>sql IFNULL(), ISNULL(), COALESCE(), and NVL() Functions
+                The MySQL IFNULL() function lets you return an alternative value if an expression is NULL:</p>
+            <p>&#8594; select ProductName, UnitPrice * (UnitsInStock + IFNULL(UnitsOnOrder, 0)) from Products;</p>
+            <p>ISNULL() - is also used for same purpose
+                COALESCE() - is also used for same purpose</p>
+            <p>stored procedure</p>
+            <p>&#8594; CREATE PROCEDURE procedure_name<br>
+                AS<br>
+                sql_statement<br>
+                GO;</p>
+            <p>&#8594; CREATE PROCEDURE SelectAllCustomers<br>
+                AS<br>
+                SELECT * FROM Customers<br>
+                GO;</p>
+            <p><code>&#8594; EXEC SelectAllCustomers</code></p>
+            <p>store procedure with one parameter</p>
+            <p><code>&#8594; create procedure SelectAllCustomers @City nvarchar(30)<br>
+                as<br>
+                select * from Customers WHERE City = @City<br>
+                go;<br>
+                </code></p>
+            <p><code>&#8594; exec SelectAllCustomers @City = 'London';</code></p>
+            <p>stored procedure with two parameter</p>
+            <p><code>&#8594; create procedure SelectAllCustomers @City nvarchar(30), @PostalCode nvarchar(10)
+                as <br>
+                select * from Customers WHERE City = @City AND PostalCode = @PostalCode <br>
+                go; </code></p>
+             <p><code>&#8594; exec SelectAllCustomers @City = 'London', @PostalCode = 'WA1 1DP';</code></p>
         </section>
     </div>
     <script src="main.js"></script>
