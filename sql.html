@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style3.css">
     <link rel="stylesheet" href="sql.css">
 </head>
 
@@ -17,8 +16,8 @@
         <nav class="navigation">
             <h2 class="logo">Logo</h2>
             <div>
-                <a href="home2.html">Home</a>
-                <a hreft="languages2.html">Languages</a>
+                <a href="index.html">Home</a>
+                <a href="language.html">Languages</a>
                 <button class="btnLogin-popup">Login</button>
             </div>
         </nav>
@@ -26,13 +25,13 @@
     <nav class="mobile-nav">
         <ul class="mobile-nav__item-list">
             <li class="mobile-nav__item">
-                <a class="mobile-nav-item" href="home2.html" onclick="
+                <a class="mobile-nav-item" href="index.html" onclick="
                 document.getElementsByClassName('backdrop')[0].style.display = 'none' ; 
                 document.getElementsByClassName('mobile-nav')[0].classList.remove('open') ; 
                 ">Home</a>
             </li>
             <li class="mobile-nav__item">
-                <a class="mobile-nav-item1" href="languages2.html">Languages</a>
+                <a class="mobile-nav-item1" href="language.html">Languages</a>
             </li>
             <li class="mobile-nav__item">
                 <button class="btnLogin-popup">Login</button>
@@ -42,20 +41,19 @@
     <nav class="mobile-nav">
         <ul class="mobile-nav__item-list">
             <li class="mobile-nav__item">
-                <a class="mobile-nav-item" href="#" onclick="
+                <a class="mobile-nav-item" href="index.html" onclick="
                 document.getElementsByClassName('backdrop')[0].style.display = 'none' ; 
                 document.getElementsByClassName('mobile-nav')[0].classList.remove('open') ; 
                 ">Home</a>
             </li>
             <li class="mobile-nav__item">
-                <a class="mobile-nav-item1" href="#">Languages</a>
+                <a class="mobile-nav-item1" href="language.html">Languages</a>
             </li>
             <li class="mobile-nav__item">
                 <button class="btnLogin-popup">Login</button>
             </li>
         </ul>
     </nav>
-
 
     <!-- min-height: 4em; display: table-cell; vertical-align: middle ;-->
     <div class="language">
@@ -374,9 +372,50 @@
                 select * from Customers WHERE City = @City AND PostalCode = @PostalCode <br>
                 go; </code></p>
              <p><code>&#8594; exec SelectAllCustomers @City = 'London', @PostalCode = 'WA1 1DP';</code></p>
+             <p>Single line comments start with --</p>
+             <p>Multi line comments start with /* and end with */</p>
+             <p>SQL Dates</p>
+             <p>DATE - format: YYYY-MM-DD</p>
+             <p>DATETIME - format: YYYY-MM-DD HH:MI:SS</p>
+             <p>TIMESTAMP - format: YYYY-MM-DD HH:MI:SS</p>
+             <p>YEAR - format YYYY or YY</p>
+             <p><code>&#8594; select * FROM ORDERS WHERE OrderDAte='2008-11-11' </code></p>
+             <p>SQL Views</p>
+             <p>In SQL, a view is a virtual table based on the result-set of an SQL statement.</p>
+             <p><code>&#8594; create view [Brazil Customers] AS
+                SELECT CustomerName, ContactName
+                FROM Customers
+                WHERE Country = 'Brazil'</code></p>
+            <p>To execute the View</p>
+            <p><code>&#8594; select * FROM [Brazil Customers]; </code></p>
+            <p>SQL Injection</p>
+            <p>SQL Injection Based on 1=1 is Always True</p>
+            <p><code>&#8594; select * FROM Users WHERE UserId = 105 OR 1=1;</code></p>
+            <p><code>&#8594; select UserId, Name, Password FROM Users WHERE UserId = 105 or 1=1;</code></p>
+            <p>SQL Injection Based on ""="" is Always True
+                uName = getRequestString("username");
+                uPass = getRequestString("userpassword");</p>
+            <p><code>&#8594; sql = 'SELECT * FROM Users WHERE Name ="' + uName + '" AND Pass ="' + uPass + '"'</code></p>
+            <p>statement will look like this</p>
+            <p><code>&#8594; select * FROM Users WHERE Name ="John Doe" AND Pass ="myPass"</code></p>
+            <p>A hacker might get access to user names and passwords in a database by simply inserting " OR ""=" into the user name or password text box:</p>
+            <p>the sql above is valid and will return all rows from the "Users" table, since OR ""="" is always TRUE.</p>
+            <p><code>&#8594; select * from Users WHERE Name ="" or ""="" AND Pass ="" or ""=""</code></p>
+            <p>SQL Injection Based on Batched SQL Statements <br>
+                txtUserId = getRequestString("UserId");<br>
+                txtSQL = "SELECT * FROM Users WHERE UserId = " + txtUserId;</p>
+            <p>the statement will look like this </p>
+            <p><code>&#8594; select * FROM Users WHERE UserId = 105; DROP TABLE Suppliers;</code></p>
+            <p>this will be the provided input when UserId value which is txtUserId will be provided which is given below</p>
+            <p>User id:  105; DROP TABLE Suppliers</p>
+            <p><code>&#8594; Use SQL Parameters for Protection <br>
+                txtUserId = getRequestString("UserId"); <br>
+                txtSQL = "SELECT * FROM Users WHERE UserId = @0"; <br>
+                db.Execute(txtSQL,txtUserId);</code></p>
+
         </section>
     </div>
-    <script src="main.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>
